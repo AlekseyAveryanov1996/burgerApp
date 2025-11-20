@@ -14,5 +14,12 @@
     {
       "path": "./.nuxt/tsconfig.node.json"
     }
-  ]
+  ],
+  "compilerOptions": {
+    "types": ["@nuxt/types", "@vue/runtime-dom"]
+  },
+  "vueCompilerOptions": {
+    "target": 3,
+    "plugins": ["@volar/vue-language-plugin-pug"]
+  }
 }

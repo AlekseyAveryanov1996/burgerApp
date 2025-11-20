@@ -1,0 +1,30 @@
+// Функция для генерации пути к шрифтам
+@function font-url($file) {
+  @return '/fonts/' + $file;
+}
+
+// Основной миксин для подключения шрифтов
+@mixin webfont($family, $file, $weight: normal, $style: normal) {
+  @font-face {
+    font-family: $family;
+    src: url(font-url($file + '.ttf')) format('truetype');
+    font-weight: $weight;
+    font-style: $style;
+    font-display: swap;
+  }
+}
+
+$fontName: Nunito;
+$fontNameLight: $fontName + '-Light';
+$fontNameRegular: $fontName + '-Regular';
+$fontNameMedium: $fontName + '-Medium';
+$fontNameBold: $fontName + '-Bold';
+$fontNameExtraBold: $fontName + '-ExtraBold';
+$fontNameBlack: $fontName + '-Black';
+
+@include webfont($fontName, $fontNameLight, 300, normal);
+@include webfont($fontName, $fontNameRegular, 400, normal);
+@include webfont($fontName, $fontNameMedium, 500, normal);
+@include webfont($fontName, $fontNameBold, 700, normal);
+@include webfont($fontName, $fontNameExtraBold, 800, normal);
+@include webfont($fontName, $fontNameBlack, 900, normal);

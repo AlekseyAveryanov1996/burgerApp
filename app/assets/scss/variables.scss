@@ -1,0 +1,115 @@
+:root {
+  --color-accent: #FFAB08;
+  --color-white: #FFFFFF;
+  --color-black: #000000;
+  --color-orange: #FF7020;
+  --color-gray: #F2F2F3;
+  --color-light-gray: #F9F9F9;
+
+  --trans: .2s ease;
+
+  --fontName: Nunito;
+
+  --box-padding: 60px;
+  --body-size: 12px;
+  --body-lineHeight: 20px;
+
+  --h1: 20px;
+  --h2: 16px;
+  --h3: 14px;
+  --h4: 14px;
+  --h5: 14px;
+
+  --lh1: 26px;
+  --lh2: 27px;
+  --lh3: 20px;
+  --lh4: 16px;
+  --lh5: 20px;
+
+  --padding-container: 0 10px;
+  --mw-container: 1920px;
+
+  @include min('mobile') {
+    --box-padding: 80px;
+    --body-size: 12px;
+    --body-lineHeight: 20px;
+
+    --h1: 33px;
+    --h2: 26px;
+    --h3: 20px;
+
+    --lh1: 35px;
+    --lh2: 35px;
+    --lh3: 26px
+    --lh4: 20px;
+    --lh5: 27px;
+
+    --padding-container: 0 64px;
+    --mw-container: 1920px;
+  };
+
+  @include min('tablet') {
+    --box-padding: 100px;
+    --body-size: 16px;
+    --body-lineHeight: 20px;
+
+    --h1: 33px;
+    --h2: 26px;
+    --h3: 20px;
+    --h4: 20px;
+    --h5: 16px;
+
+    --lh1: 35px;
+    --lh2: 35px;
+    --lh3: 26px;
+    --lh4: 20px;
+    --lh5: 27px;
+
+    --padding-container: 0 32px;
+    --mw-container: 1920px;
+
+  };
+
+  @include min('tabletLarge') {
+    --box-padding: 120px;
+    --body-size: 16px;
+    --body-lineHeight: 20px;
+
+    --h1: 33px;
+    --h2: 26px;
+    --h3: 20px;
+    --h4: 20px;
+    --h5: 16px;
+
+    --lh1: 35px;
+    --lh2: 35px;
+    --lh3: 26px;
+    --lh4: 20px;
+    --lh5: 27px;
+
+    --padding-container: 0 20px;
+    --mw-container: 1128px;
+  };
+
+  @include min('wide') {
+    --box-padding: 140px;
+    --body-size: 16px;
+    --body-lineHeight: 20px;
+
+    --h1: 33px;
+    --h2: 26px;
+    --h3: 20px;
+    --h4: 20px;
+    --h5: 16px;
+
+    --lh1: 35px;
+    --lh2: 35px;
+    --lh3: 26px;
+    --lh4: 20px;
+    --lh5: 27px;
+
+    --padding-container: 0 20px;
+    --mw-container: 1271px;
+  };
+
+}
