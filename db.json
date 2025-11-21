@@ -1,0 +1,21 @@
+{
+  "categories" : [
+    { "id": "1", "nameCategory": "Бургеры", "iconCategory": "/images/menu/free-icon-cheeseburger.png", "nameCategoryUrl": "cheeseburger"},
+    { "id": "2", "nameCategory": "Закуски", "iconCategory": "/images/menu/free-icon-onion.png", "nameCategoryUrl": "onion"},
+    { "id": "3", "nameCategory": "Хот-доги", "iconCategory": "/images/menu/free-icon-hotdog-sandwich.png", "nameCategoryUrl": "sandwich"},
+    { "id": "4", "nameCategory": "Комбо", "iconCategory": "/images/menu/free-icon-fast-food.png", "nameCategoryUrl": "fast-food"},
+    { "id": "5", "nameCategory": "Шаурма", "iconCategory": "/images/menu/free-icon-burrito.png", "nameCategoryUrl": "burrito"},
+    { "id": "6", "nameCategory": "Пицца", "iconCategory": "/images/menu/free-icon-pizza.png", "nameCategoryUrl": "pizza"},
+    { "id": "7", "nameCategory": "Вок", "iconCategory": "/images/menu/free-icon-noodles.png", "nameCategoryUrl": "noodles"},
+    { "id": "8", "nameCategory": "Десерты", "iconCategory": "/images/menu/free-icon-doughnut.png", "nameCategoryUrl": "doughnut"},
+    { "id": "9", "nameCategory": "Соусы", "iconCategory": "/images/menu/free-icon-ketchup.png", "nameCategoryUrl": "ketchup"}
+  ],
+  "categoriesItems": [
+    {"id" : "1", "name": "Бургер золотой", "price": "1000", "catergiresID": "1"},
+    {"id" : "2", "name": "Бургер постовой", "price": "2000", "catergiresID": "1"},
+    {"id" : "3", "name": "Пицца", "price": "2000", "catergiresID": "2"},
+    {"id" : "4", "name": "Шаурма", "price": "2000", "catergiresID": "5"}
+
+  ]
+}
+
