@@ -11,11 +11,18 @@
     { "id": "9", "nameCategory": "Соусы", "iconCategory": "/images/menu/free-icon-ketchup.png", "nameCategoryUrl": "ketchup"}
   ],
   "categoriesItems": [
-    {"id" : "1", "name": "Бургер золотой", "price": "1000", "catergiresID": "1"},
-    {"id" : "2", "name": "Бургер постовой", "price": "2000", "catergiresID": "1"},
-    {"id" : "3", "name": "Пицца", "price": "2000", "catergiresID": "2"},
-    {"id" : "4", "name": "Шаурма", "price": "2000", "catergiresID": "5"}
-
+    {"id" : "1", "name": "Мясная бомба", "price": "689", "size": "520", "imgSrc": "/images/products/burgers/photo.jpg", "catergiresID": "1"},
+    {"id" : "2", "name": "Супер сырный", "price": "550", "size": "512", "imgSrc": "/images/products/burgers/photo_2.jpg", "catergiresID": "1"},
+    {"id" : "3", "name": "Сытный", "price": "639", "size": "580", "imgSrc": "/images/products/burgers/photo_3.jpg", "catergiresID": "1"},
+    {"id" : "4", "name": "Тяжелый удар", "price": "480", "size": "470", "imgSrc": "/images/products/burgers/photo_4.jpg", "catergiresID": "1"},
+    {"id" : "5", "name": "Вечная классика", "price": "450", "size": "450", "imgSrc": "/images/products/burgers/photo_5.jpg", "catergiresID": "1"},
+    {"id" : "6", "name": "Итальянский", "price": "560", "size": "510", "imgSrc": "/images/products/burgers/photo_6.jpg", "catergiresID": "1"},
+    {"id" : "7", "name": "Начос", "price": "250", "size": "220", "imgSrc": "/images/products/onion/photo.jpg", "catergiresID": "2"},
+    {"id" : "8", "name": "Картошка фри", "price": "245", "size": "180", "imgSrc": "/images/products/onion/photo_2.jpg", "catergiresID": "2"},
+    {"id" : "9", "name": "Луковые кольца", "price": "230", "size": "160", "imgSrc": "/images/products/onion/photo.jpg", "catergiresID": "2"},
+    {"id" : "10", "name": "Домашний хот-дог", "price": "290", "size": "250", "imgSrc": "/images/products/hot-dog/photo.jpg", "catergiresID": "3"},
+    {"id" : "11", "name": "Жгучий хот-дог", "price": "239", "size": "245", "imgSrc": "/images/products/hot-dog/photo_2.jpg", "catergiresID": "3"},
+    {"id" : "12", "name": "Классический хот-дог", "price": "220", "size": "215", "imgSrc": "/images/products/hot-dog/photo_3.jpg", "catergiresID": "3"}
   ]
 }
 

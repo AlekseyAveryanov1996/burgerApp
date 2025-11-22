@@ -1,19 +1,23 @@
 <script setup lang="ts">
+import type { Product } from "~/interfaces/Product";
+
 const categoryStore = useCategory();
 
 // Загружаем категорию на основе URL
 await categoryStore.loadCategoryFromUrl();
 
 // Подгружаем список товаров из категории
-const { data: categoryLists } = await useFetch<[]>(
-  `http://localhost:3001/categoriesItems?catergiresID=${categoryStore.idCategory.value}`
+const { data: productsLists } = await useFetch<Product[]>(
+  `${apiConfig.baseURL}${apiConfig.endPoints.products}?catergiresID=${categoryStore.idCategory.value}`
 );
 
 const isEmptyList = computed(() => {
-  if (categoryLists.value) {
-    return categoryLists.value.length;
+  if (productsLists.value) {
+    return productsLists.value.length;
   }
 });
+
+const modalStore = useModal();
 </script>
 
 <template>
@@ -24,7 +28,23 @@ const isEmptyList = computed(() => {
     <div v-if="!isEmptyList" class="gategory__error h2">
       Данный товар временно отсутствует!
     </div>
-    <div v-else class="gategory__lists gategory-lists">lists</div>
+    <div v-else class="gategory__lists gategory-lists">
+      <ProductsItem
+        v-for="product in productsLists"
+        :key="product.id"
+        :name="product.name"
+        :size="Number(product.size)"
+        :price="Number(product.price)"
+        :img-src="product.imgSrc"
+        @open-popup="modalStore.modalOpen"
+      />
+    </div>
+
+    <UiModalOverlay
+      :is-open="modalStore.isModalOpen.value"
+      @close="modalStore.modalClose"
+      ><UiButton :style="'orange'">Попап</UiButton></UiModalOverlay
+    >
   </div>
 </template>
 

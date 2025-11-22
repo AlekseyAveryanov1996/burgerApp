@@ -1,7 +1,20 @@
+<script setup lang="ts">
+const categoryStore = useCategory();
+</script>
+
 <template>
   <header class="header">
     <div class="container header__container">
-      <NuxtLink to="/" class="header__logo">
+      <NuxtLink
+        to="/"
+        class="header__logo"
+        @click="
+          () => {
+            categoryStore.setIdCategory(1);
+            categoryStore.setTitleCategory('Бургеры');
+          }
+        "
+      >
         <img src="/images/logo.svg" alt="Logo" />
       </NuxtLink>
 

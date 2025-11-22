@@ -19,11 +19,18 @@ const { srcImg, titleCategory } = defineProps<{
   display: flex;
   align-items: center;
   gap: 8px;
-  padding: 8px 14px;
+  padding: 6px 12px;
   border-radius: 50px;
   background: var(--color-white);
   cursor: pointer;
   transition: background 0.5s linear;
+  border: 1px solid transparent;
+  transition: border var(--trans);
+  &:hover {
+    @include min("tabletLarge") {
+      border: 1px solid var(--color-orange);
+    }
+  }
   &__icon {
     display: flex;
     width: 24px;

@@ -23,7 +23,7 @@ useSwiper(swiperMenuWrapper, {
 
 // получаем данные с категориями
 const { data: categoriesMenu } = await useFetch<CategoryMenu[]>(
-  "http://localhost:3001/categories"
+  `${apiConfig.baseURL}${apiConfig.endPoints.categories}`
 );
 
 const categoryStore = useCategory();
