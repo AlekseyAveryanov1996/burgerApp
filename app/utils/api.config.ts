@@ -3,5 +3,6 @@ export const apiConfig = {
   endPoints: {
     categories: "/categories",
     products: "/categoriesItems",
+    basket: "/basket",
   },
 };

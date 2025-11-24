@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { Product } from "~/interfaces/Product";
+import type { Product, ProductModalsProps } from "~/interfaces/Product";
 
 const categoryStore = useCategory();
 
@@ -18,6 +18,36 @@ const isEmptyList = computed(() => {
 });
 
 const modalStore = useModal();
+
+function openProduct(propsProduct: ProductModalsProps) {
+  const modalPropsProduct = {
+    imgSrc: propsProduct.imgSrc,
+    name: propsProduct.name,
+    price: Number(propsProduct.price),
+    size: Number(propsProduct.size),
+    description: propsProduct.description,
+    structure: propsProduct.structure,
+    calories: Number(propsProduct.calories),
+  };
+
+  modalStore.open("product", modalPropsProduct);
+}
+
+const basketStore = useBasket();
+
+function addBasketProduct(product: Product, count = 1) {
+  const dataProductBasket = {
+    id: product.id,
+    name: product.name,
+    price: product.price,
+    size: product.size,
+    imgSrc: product.imgSrc,
+    quantity: count,
+  };
+  console.log("add");
+
+  basketStore.addBasket(dataProductBasket);
+}
 </script>
 
 <template>
@@ -30,21 +60,16 @@ const modalStore = useModal();
     </div>
     <div v-else class="gategory__lists gategory-lists">
       <ProductsItem
+        @click="openProduct(product)"
         v-for="product in productsLists"
         :key="product.id"
         :name="product.name"
         :size="Number(product.size)"
         :price="Number(product.price)"
         :img-src="product.imgSrc"
-        @open-popup="modalStore.modalOpen"
+        @add-basket="addBasketProduct(product)"
       />
     </div>
-
-    <UiModalOverlay
-      :is-open="modalStore.isModalOpen.value"
-      @close="modalStore.modalClose"
-      ><UiButton :style="'orange'">Попап</UiButton></UiModalOverlay
-    >
   </div>
 </template>
 

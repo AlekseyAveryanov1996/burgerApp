@@ -2,14 +2,19 @@
 import type { Product } from "~/interfaces/Product";
 
 const { imgSrc, name, size, price } =
-  defineProps<Omit<Product, "id" | "catergiresID">>();
+  defineProps<
+    Omit<
+      Product,
+      "id" | "catergiresID" | "description" | "structure" | "calories"
+    >
+  >();
 
 const emit = defineEmits<{
-  openPopup: [];
+  "add-basket": [];
 }>();
 
 function clickBtn() {
-  emit("openPopup");
+  emit("add-basket");
 }
 </script>
 
@@ -24,7 +29,7 @@ function clickBtn() {
     </div>
     <div class="product-item__size">{{ size }}г</div>
     <div class="product-item__button">
-      <UiButton :style="'gray'" :fullwidth="true" @click="clickBtn"
+      <UiButton :style="'gray'" :fullwidth="true" @click.stop="clickBtn"
         >Добавить</UiButton
       >
     </div>
@@ -39,8 +44,15 @@ function clickBtn() {
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  cursor: pointer;
+  transition: box-shadow var(--trans);
   @include min("tablet") {
     padding: 12px;
+  }
+  &:hover {
+    @include min("tabletLarge") {
+      box-shadow: 0 0 6px rgba(203, 207, 217, 0.6);
+    }
   }
   &__img {
     display: flex;
