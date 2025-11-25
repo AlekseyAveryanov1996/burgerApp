@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { BasketItem } from "~/interfaces/Basket-item";
 
-const { imgSrc, size, name, price, quantity } = defineProps<BasketItem>();
+const { imgSrc, size, name, price, quantity, id } = defineProps<BasketItem>();
 
 const emit = defineEmits<{
   "delete-product": [];
@@ -10,6 +10,8 @@ const emit = defineEmits<{
 function deleteProduct() {
   emit("delete-product");
 }
+
+const storeBasket = useBasket();
 </script>
 
 <template>
@@ -23,7 +25,10 @@ function deleteProduct() {
       <div class="basket-item__price">{{ price }}₽</div>
     </div>
     <div class="basket-item__count">
-      <UiCounter :model-value="quantity" />
+      <UiCounter
+        :model-value="quantity"
+        @change="(valueTest) => storeBasket.updateQuantity(id, valueTest)"
+      />
     </div>
     <div class="basket-item__delete" @click="deleteProduct">
       <IconsClose />

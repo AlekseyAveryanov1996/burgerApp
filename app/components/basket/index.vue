@@ -6,6 +6,7 @@ function toggleOpen() {
 }
 
 const basketStore = useBasket();
+const modalStore = useModal();
 </script>
 
 <template>
@@ -42,7 +43,10 @@ const basketStore = useBasket();
           </div>
 
           <div class="basket__order">
-            <UiButton :style="'orange'" :fullwidth="true"
+            <UiButton
+              @click="modalStore.open('order')"
+              :style="'orange'"
+              :fullwidth="true"
               >Оформить заказ</UiButton
             >
           </div>

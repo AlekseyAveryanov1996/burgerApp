@@ -19,7 +19,7 @@ const isEmptyList = computed(() => {
 
 const modalStore = useModal();
 
-function openProduct(propsProduct: ProductModalsProps) {
+function openProduct(propsProduct: Product) {
   const modalPropsProduct = {
     imgSrc: propsProduct.imgSrc,
     name: propsProduct.name,
@@ -28,6 +28,8 @@ function openProduct(propsProduct: ProductModalsProps) {
     description: propsProduct.description,
     structure: propsProduct.structure,
     calories: Number(propsProduct.calories),
+    id: propsProduct.id,
+    catergiresID: Number(propsProduct.catergiresID),
   };
 
   modalStore.open("product", modalPropsProduct);
@@ -44,8 +46,6 @@ function addBasketProduct(product: Product, count = 1) {
     imgSrc: product.imgSrc,
     quantity: count,
   };
-  console.log("add");
-
   basketStore.addBasket(dataProductBasket);
 }
 </script>

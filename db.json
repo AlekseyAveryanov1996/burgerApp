@@ -191,40 +191,31 @@
   ],
   "basket": [
     {
-      "id": "dacc",
-      "productID": "2",
-      "name": "Супер сырный",
-      "price": "550",
-      "size": "512",
+      "id": "10",
+      "productID": "10",
+      "name": "Домашний хот-дог",
+      "price": "290",
+      "size": "250",
       "quantity": 1,
-      "imgSrc": "/images/products/burgers/photo_2.jpg"
+      "imgSrc": "/images/products/hot-dog/photo.jpg"
+    }
+  ],
+  "orders": [
+    {
+      "id": "0749",
+      "name": "Алексей",
+      "number": 678979,
+      "type": "pickup",
+      "adress": ""
     },
     {
-      "id": "22ac",
-      "productID": "1",
-      "name": "Мясная бомба",
-      "price": "689",
-      "size": "520",
-      "quantity": 1,
-      "imgSrc": "/images/products/burgers/photo.jpg"
-    },
-    {
-      "id": "a63f",
-      "productID": "4",
-      "name": "Тяжелый удар",
-      "price": "480",
-      "size": "470",
-      "quantity": 1,
-      "imgSrc": "/images/products/burgers/photo_4.jpg"
-    },
-    {
-      "id": "7f60",
-      "productID": "3",
-      "name": "Сытный",
-      "price": "639",
-      "size": "580",
-      "quantity": 1,
-      "imgSrc": "/images/products/burgers/photo_3.jpg"
+      "id": "1bc6",
+      "name": "Алексей",
+      "number": 99797,
+      "type": "delivery",
+      "adress": "Тула",
+      "floor": "1",
+      "intercom": "1"
     }
   ]
 }

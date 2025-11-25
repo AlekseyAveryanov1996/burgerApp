@@ -1,8 +1,37 @@
 <script setup lang="ts">
-import type { Product, ProductModalsProps } from "~/interfaces/Product";
+import type { Product } from "~/interfaces/Product";
 
-const { imgSrc, name, price, size, description, structure, calories } =
-  defineProps<ProductModalsProps>();
+const {
+  imgSrc,
+  name,
+  price,
+  size,
+  description,
+  structure,
+  calories,
+  id,
+  catergiresID,
+} = defineProps<Product>();
+
+const countValue = ref(1);
+
+const dataProductBasketPopup = computed(() => ({
+  id,
+  catergiresID,
+  name,
+  price,
+  size,
+  imgSrc,
+  quantity: countValue.value,
+}));
+
+const basketStore = useBasket();
+const popupStore = useModal();
+
+function addBasketInPopup() {
+  basketStore.addBasket(dataProductBasketPopup.value);
+  popupStore.close();
+}
 </script>
 
 <template>
@@ -23,8 +52,10 @@ const { imgSrc, name, price, size, description, structure, calories } =
     </div>
     <div class="product-modal__bottom">
       <div class="product-modal__buttons">
-        <UiButton :style="'orange'" :fullwidth="true">Добавить</UiButton>
-        <UiCounter :max="10" />
+        <UiButton @click="addBasketInPopup" :style="'orange'" :fullwidth="true"
+          >Добавить</UiButton
+        >
+        <UiCounter v-model="countValue" />
       </div>
       <div class="product-modal__price">{{ price }}₽</div>
     </div>

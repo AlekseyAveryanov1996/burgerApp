@@ -18,18 +18,34 @@ export const useBasket = () => {
 
   async function addBasket(productData: BasketItem) {
     try {
-      await $fetch(`${apiConfig.baseURL}${apiConfig.endPoints.basket}`, {
-        method: "POST",
-        body: {
-          productID: productData.id,
-          name: productData.name,
-          price: productData.price,
-          size: productData.size,
-          quantity: productData.quantity || 1,
-          imgSrc: productData.imgSrc,
-        },
-      });
+      const existingItem = basketItems.value?.find(
+        (item) => item.id === productData.id
+      );
 
+      if (existingItem) {
+        await $fetch(
+          `${apiConfig.baseURL}${apiConfig.endPoints.basket}/${existingItem.id}`,
+          {
+            method: "PATCH",
+            body: {
+              quantity: existingItem.quantity + (productData.quantity || 1),
+            },
+          }
+        );
+      } else {
+        await $fetch(`${apiConfig.baseURL}${apiConfig.endPoints.basket}`, {
+          method: "POST",
+          body: {
+            id: productData.id,
+            productID: productData.id,
+            name: productData.name,
+            price: productData.price,
+            size: productData.size,
+            quantity: productData.quantity || 1,
+            imgSrc: productData.imgSrc,
+          },
+        });
+      }
       await refresh(); // обновляем данные после добавления
     } catch (error) {
       console.log(error, "Ошибка добавления в корзину");
@@ -51,6 +67,24 @@ export const useBasket = () => {
     }
   }
 
+  async function updateQuantity(itemId: number | string, newQuantity: number) {
+    try {
+      await $fetch(
+        `${apiConfig.baseURL}${apiConfig.endPoints.basket}/${itemId}`,
+        {
+          method: "PATCH",
+          body: {
+            quantity: newQuantity,
+          },
+        }
+      );
+      await refresh();
+      console.log("Количество изменено");
+    } catch (error) {
+      console.log(error, "Ошибка обновления данных");
+    }
+  }
+
   return {
     countInBasket,
     basketItems,
@@ -58,5 +92,6 @@ export const useBasket = () => {
     refresh,
     addBasket,
     deleteProduct,
+    updateQuantity,
   };
 };

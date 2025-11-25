@@ -4,5 +4,6 @@ export const apiConfig = {
     categories: "/categories",
     products: "/categoriesItems",
     basket: "/basket",
+    orders: "/orders",
   },
 };
