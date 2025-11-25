@@ -189,17 +189,7 @@
       "calories": "430"
     }
   ],
-  "basket": [
-    {
-      "id": "10",
-      "productID": "10",
-      "name": "Домашний хот-дог",
-      "price": "290",
-      "size": "250",
-      "quantity": 1,
-      "imgSrc": "/images/products/hot-dog/photo.jpg"
-    }
-  ],
+  "basket": [],
   "orders": [
     {
       "id": "0749",

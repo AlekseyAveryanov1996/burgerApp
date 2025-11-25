@@ -5,12 +5,13 @@
     <LayoutHeader />
 
     <main class="main-content">
-      <div class="container main-content__container">
+      <div class="container main-content__container box-main box-main_bottom">
         <Basket />
         <slot />
       </div>
     </main>
-    <footer class="footer">footer</footer>
+
+    <LayoutFooter />
 
     <UiModalOverlay />
   </div>
