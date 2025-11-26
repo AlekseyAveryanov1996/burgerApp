@@ -35,13 +35,4 @@ export default defineNuxtConfig({
           : "http://localhost:3001",
     },
   },
-
-  nitro: {
-    routeRules: {
-      "/**": {
-        proxy: "https://my-burger-api-production.up.railway.app/**",
-        cors: true,
-      },
-    },
-  },
 });
