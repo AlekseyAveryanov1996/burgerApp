@@ -22,4 +22,26 @@ export default defineNuxtConfig({
   },
 
   modules: ["@nuxt/image", "nuxt-swiper"],
+
+  app: {
+    baseURL: process.env.NODE_ENV === "production" ? "/burgerApp/" : "/",
+  },
+
+  runtimeConfig: {
+    public: {
+      apiBase:
+        process.env.NODE_ENV === "production"
+          ? "https://my-burger-api-production.up.railway.app/"
+          : "http://localhost:3001",
+    },
+  },
+
+  nitro: {
+    routeRules: {
+      "/**": {
+        proxy: "https://my-burger-api-production.up.railway.app/**",
+        cors: true,
+      },
+    },
+  },
 });
