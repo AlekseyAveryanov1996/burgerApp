@@ -23,7 +23,7 @@ useSwiper(swiperMenuWrapper, {
 
 // получаем данные с категориями
 const { data: categoriesMenu } = await useFetch<CategoryMenu[]>(
-  `${apiConfig.baseURL}${apiConfig.endPoints.categories}`
+  `https://my-burger-api-production.up.railway.app/categories`
 );
 
 const categoryStore = useCategory();

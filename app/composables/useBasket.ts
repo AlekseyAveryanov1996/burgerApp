@@ -2,7 +2,7 @@ import type { BasketItem } from "~/interfaces/Basket-item";
 
 export const useBasket = () => {
   const { data: basketItems, refresh } = useFetch<BasketItem[]>(
-    `${apiConfig.baseURL}${apiConfig.endPoints.basket}`
+    `https://my-burger-api-production.up.railway.app/basket`
   );
 
   const countInBasket = computed(() => {
@@ -24,7 +24,7 @@ export const useBasket = () => {
 
       if (existingItem) {
         await $fetch(
-          `${apiConfig.baseURL}${apiConfig.endPoints.basket}/${existingItem.id}`,
+          `https://my-burger-api-production.up.railway.app/basket/${existingItem.id}`,
           {
             method: "PATCH",
             body: {
@@ -33,7 +33,7 @@ export const useBasket = () => {
           }
         );
       } else {
-        await $fetch(`${apiConfig.baseURL}${apiConfig.endPoints.basket}`, {
+        await $fetch(`https://my-burger-api-production.up.railway.app/basket`, {
           method: "POST",
           body: {
             id: productData.id,
@@ -55,7 +55,7 @@ export const useBasket = () => {
   async function deleteProduct(idProduct: string | number) {
     try {
       await $fetch(
-        `${apiConfig.baseURL}${apiConfig.endPoints.basket}/${idProduct}`,
+        `https://my-burger-api-production.up.railway.app/basket/${idProduct}`,
         {
           method: "DELETE",
         }
@@ -70,7 +70,7 @@ export const useBasket = () => {
   async function updateQuantity(itemId: number | string, newQuantity: number) {
     try {
       await $fetch(
-        `${apiConfig.baseURL}${apiConfig.endPoints.basket}/${itemId}`,
+        `https://my-burger-api-production.up.railway.app/basket/${itemId}`,
         {
           method: "PATCH",
           body: {

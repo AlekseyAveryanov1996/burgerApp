@@ -18,7 +18,7 @@ export const useCategory = () => {
     if (categoryUrl) {
       // Загружаем данные категории из API
       const { data: categories } = await useFetch<CategoryMenu[]>(
-        `${apiConfig.baseURL}${apiConfig.endPoints.categories}?nameCategoryUrl=${categoryUrl}`
+        `https://my-burger-api-production.up.railway.app/categories?nameCategoryUrl=${categoryUrl}`
       );
 
       if (categories.value && categories.value.length > 0) {

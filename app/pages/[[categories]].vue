@@ -8,7 +8,8 @@ await categoryStore.loadCategoryFromUrl();
 
 // Подгружаем список товаров из категории
 const { data: productsLists } = await useFetch<Product[]>(
-  `${apiConfig.baseURL}${apiConfig.endPoints.products}?catergiresID=${categoryStore.idCategory.value}`
+  // `${apiConfig.baseURL}${apiConfig.endPoints.products}?catergiresID=${categoryStore.idCategory.value}`
+  `https://my-burger-api-production.up.railway.app/categoriesItems?catergiresID=${categoryStore.idCategory.value}`
 );
 
 const isEmptyList = computed(() => {
