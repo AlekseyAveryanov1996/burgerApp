@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import type { Product, ProductModalsProps } from "~/interfaces/Product";
+import type { Product } from "~/interfaces/Product";
+import { apiPaths, useApiUrl } from "~/utils/api";
 
 const categoryStore = useCategory();
 
@@ -7,9 +8,11 @@ const categoryStore = useCategory();
 await categoryStore.loadCategoryFromUrl();
 
 // Подгружаем список товаров из категории
+const apiUrl = useApiUrl;
 const { data: productsLists } = await useFetch<Product[]>(
-  // `${apiConfig.baseURL}${apiConfig.endPoints.products}?catergiresID=${categoryStore.idCategory.value}`
-  `https://my-burger-api-production.up.railway.app/categoriesItems?catergiresID=${categoryStore.idCategory.value}`
+  apiUrl(apiPaths.categoriesItems, {
+    catergiresID: categoryStore.idCategory.value,
+  })
 );
 
 const isEmptyList = computed(() => {

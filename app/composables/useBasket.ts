@@ -1,8 +1,10 @@
 import type { BasketItem } from "~/interfaces/Basket-item";
+import { apiPaths, useApiUrl } from "~/utils/api";
 
 export const useBasket = () => {
+  const apiUrl = useApiUrl;
   const { data: basketItems, refresh } = useFetch<BasketItem[]>(
-    `https://my-burger-api-production.up.railway.app/basket`
+    apiUrl(apiPaths.basket)
   );
 
   const countInBasket = computed(() => {
@@ -23,17 +25,14 @@ export const useBasket = () => {
       );
 
       if (existingItem) {
-        await $fetch(
-          `https://my-burger-api-production.up.railway.app/basket/${existingItem.id}`,
-          {
-            method: "PATCH",
-            body: {
-              quantity: existingItem.quantity + (productData.quantity || 1),
-            },
-          }
-        );
+        await $fetch(apiUrl(`${apiPaths.basket}/${existingItem.id}`), {
+          method: "PATCH",
+          body: {
+            quantity: existingItem.quantity + (productData.quantity || 1),
+          },
+        });
       } else {
-        await $fetch(`https://my-burger-api-production.up.railway.app/basket`, {
+        await $fetch(apiUrl(apiPaths.basket), {
           method: "POST",
           body: {
             id: productData.id,
@@ -54,12 +53,9 @@ export const useBasket = () => {
 
   async function deleteProduct(idProduct: string | number) {
     try {
-      await $fetch(
-        `https://my-burger-api-production.up.railway.app/basket/${idProduct}`,
-        {
-          method: "DELETE",
-        }
-      );
+      await $fetch(apiUrl(`${apiPaths.basket}/${idProduct}`), {
+        method: "DELETE",
+      });
       await refresh();
       console.log("Товар удален из корзины");
     } catch (error) {
@@ -69,15 +65,12 @@ export const useBasket = () => {
 
   async function updateQuantity(itemId: number | string, newQuantity: number) {
     try {
-      await $fetch(
-        `https://my-burger-api-production.up.railway.app/basket/${itemId}`,
-        {
-          method: "PATCH",
-          body: {
-            quantity: newQuantity,
-          },
-        }
-      );
+      await $fetch(apiUrl(`${apiPaths.basket}/${itemId}`), {
+        method: "PATCH",
+        body: {
+          quantity: newQuantity,
+        },
+      });
       await refresh();
       console.log("Количество изменено");
     } catch (error) {
