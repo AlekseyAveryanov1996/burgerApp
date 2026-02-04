@@ -1,10 +1,9 @@
 import type { BasketItem } from "~/interfaces/Basket-item";
-import { apiPaths, useApiUrl } from "~/utils/api";
+import { apiPaths, useApiFetch } from "~/utils/api";
 
 export const useBasket = () => {
-  const apiUrl = useApiUrl;
-  const { data: basketItems, refresh } = useFetch<BasketItem[]>(
-    apiUrl(apiPaths.basket)
+  const { data: basketItems, refresh } = useAsyncData(() =>
+    useApiFetch<BasketItem[]>(apiPaths.basket)
   );
 
   const countInBasket = computed(() => {
@@ -25,14 +24,14 @@ export const useBasket = () => {
       );
 
       if (existingItem) {
-        await $fetch(apiUrl(`${apiPaths.basket}/${existingItem.id}`), {
+        await useApiFetch(`${apiPaths.basket}/${existingItem.id}`, {
           method: "PATCH",
           body: {
             quantity: existingItem.quantity + (productData.quantity || 1),
           },
         });
       } else {
-        await $fetch(apiUrl(apiPaths.basket), {
+        await useApiFetch(apiPaths.basket, {
           method: "POST",
           body: {
             id: productData.id,
@@ -53,7 +52,7 @@ export const useBasket = () => {
 
   async function deleteProduct(idProduct: string | number) {
     try {
-      await $fetch(apiUrl(`${apiPaths.basket}/${idProduct}`), {
+      await useApiFetch(`${apiPaths.basket}/${idProduct}`, {
         method: "DELETE",
       });
       await refresh();
@@ -65,7 +64,7 @@ export const useBasket = () => {
 
   async function updateQuantity(itemId: number | string, newQuantity: number) {
     try {
-      await $fetch(apiUrl(`${apiPaths.basket}/${itemId}`), {
+      await useApiFetch(`${apiPaths.basket}/${itemId}`, {
         method: "PATCH",
         body: {
           quantity: newQuantity,

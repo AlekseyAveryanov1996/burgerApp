@@ -1,5 +1,5 @@
 import type { CategoryMenu } from "~/interfaces/category-menu";
-import { apiPaths, useApiUrl } from "~/utils/api";
+import { apiPaths, useApiFetch } from "~/utils/api";
 
 export const useCategory = () => {
   const route = useRoute();
@@ -18,13 +18,15 @@ export const useCategory = () => {
 
     if (categoryUrl) {
       // Загружаем данные категории из API
-      const apiUrl = useApiUrl;
-      const { data: categories } = await useFetch<CategoryMenu[]>(
-        apiUrl(apiPaths.categories, { nameCategoryUrl: categoryUrl })
+      const categories = await useApiFetch<CategoryMenu[]>(
+        apiPaths.categories,
+        {
+          query: { nameCategoryUrl: categoryUrl },
+        }
       );
 
-      if (categories.value && categories.value.length > 0) {
-        const category = categories.value[0];
+      if (categories && categories.length > 0) {
+        const category = categories[0];
 
         if (category) {
           idCategory.value = category.id;

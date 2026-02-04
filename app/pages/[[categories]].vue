@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { Product } from "~/interfaces/Product";
-import { apiPaths, useApiUrl } from "~/utils/api";
+import { apiPaths, useApiFetch } from "~/utils/api";
 
 const categoryStore = useCategory();
 
@@ -8,10 +8,9 @@ const categoryStore = useCategory();
 await categoryStore.loadCategoryFromUrl();
 
 // Подгружаем список товаров из категории
-const apiUrl = useApiUrl;
-const { data: productsLists } = await useFetch<Product[]>(
-  apiUrl(apiPaths.categoriesItems, {
-    catergiresID: categoryStore.idCategory.value,
+const { data: productsLists } = await useAsyncData(() =>
+  useApiFetch<Product[]>(apiPaths.categoriesItems, {
+    query: { catergiresID: categoryStore.idCategory.value },
   })
 );
 
