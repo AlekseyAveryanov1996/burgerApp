@@ -189,7 +189,44 @@
       "calories": "430"
     }
   ],
-  "basket": [],
+  "basket": [
+    {
+      "id": "5",
+      "productID": "5",
+      "name": "Вечная классика",
+      "price": "450",
+      "size": "450",
+      "quantity": 5,
+      "imgSrc": "/images/products/burgers/photo_5.jpg"
+    },
+    {
+      "id": "2",
+      "productID": "2",
+      "name": "Супер сырный",
+      "price": "550",
+      "size": "512",
+      "quantity": 1,
+      "imgSrc": "/images/products/burgers/photo_2.jpg"
+    },
+    {
+      "id": "3",
+      "productID": "3",
+      "name": "Сытный",
+      "price": "639",
+      "size": "580",
+      "quantity": 15,
+      "imgSrc": "/images/products/burgers/photo_3.jpg"
+    },
+    {
+      "id": "1",
+      "productID": "1",
+      "name": "Мясная бомба",
+      "price": "689",
+      "size": "520",
+      "quantity": 1,
+      "imgSrc": "/images/products/burgers/photo.jpg"
+    }
+  ],
   "orders": [
     {
       "id": "0749",
