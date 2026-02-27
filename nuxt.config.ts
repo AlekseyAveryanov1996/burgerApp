@@ -33,6 +33,7 @@ export default defineNuxtConfig({
         process.env.NODE_ENV === "production"
           ? "https://my-burger-api-production.up.railway.app/"
           : "https://my-burger-api-production.up.railway.app/",
+      apiFallbackBase: "http://localhost:3001/",
     },
   },
 });
